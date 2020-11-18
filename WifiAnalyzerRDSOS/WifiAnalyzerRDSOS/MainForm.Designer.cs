@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.availableNetworksListView = new System.Windows.Forms.ListView();
             this.networksComboBox = new System.Windows.Forms.ComboBox();
             this.interfaceIndexLabel = new System.Windows.Forms.Label();
             this.availableNetworkNoLabel = new System.Windows.Forms.Label();
@@ -41,16 +40,9 @@
             this.interfaceStatusLabel = new System.Windows.Forms.Label();
             this.interfaceStatusTextBox = new System.Windows.Forms.TextBox();
             this.interfacesComboBox = new System.Windows.Forms.ComboBox();
+            this.availableNetworksDataGridView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.availableNetworksDataGridView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // availableNetworksListView
-            // 
-            this.availableNetworksListView.HideSelection = false;
-            this.availableNetworksListView.Location = new System.Drawing.Point(417, 89);
-            this.availableNetworksListView.Name = "availableNetworksListView";
-            this.availableNetworksListView.Size = new System.Drawing.Size(362, 249);
-            this.availableNetworksListView.TabIndex = 0;
-            this.availableNetworksListView.UseCompatibleStateImageBehavior = false;
             // 
             // networksComboBox
             // 
@@ -60,6 +52,7 @@
             this.networksComboBox.Name = "networksComboBox";
             this.networksComboBox.Size = new System.Drawing.Size(225, 28);
             this.networksComboBox.TabIndex = 1;
+            this.networksComboBox.SelectedIndexChanged += new System.EventHandler(this.networksComboBox_SelectedIndexChanged);
             // 
             // interfaceIndexLabel
             // 
@@ -168,11 +161,20 @@
             this.interfacesComboBox.TabIndex = 13;
             this.interfacesComboBox.SelectedIndexChanged += new System.EventHandler(this.interfacesComboBox_SelectedIndexChanged);
             // 
+            // availableNetworksDataGridView
+            // 
+            //this.availableNetworksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.availableNetworksDataGridView.Location = new System.Drawing.Point(425, 97);
+            this.availableNetworksDataGridView.Name = "availableNetworksDataGridView";
+            this.availableNetworksDataGridView.Size = new System.Drawing.Size(354, 235);
+            this.availableNetworksDataGridView.TabIndex = 14;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 382);
+            this.Controls.Add(this.availableNetworksDataGridView);
             this.Controls.Add(this.interfacesComboBox);
             this.Controls.Add(this.interfaceStatusTextBox);
             this.Controls.Add(this.interfaceStatusLabel);
@@ -185,17 +187,15 @@
             this.Controls.Add(this.availableNetworkNoLabel);
             this.Controls.Add(this.interfaceIndexLabel);
             this.Controls.Add(this.networksComboBox);
-            this.Controls.Add(this.availableNetworksListView);
             this.Name = "MainForm";
             this.Text = "WifiAnalyzer";
+            ((System.ComponentModel.ISupportInitialize)(this.availableNetworksDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView availableNetworksListView;
         private System.Windows.Forms.ComboBox networksComboBox;
         private System.Windows.Forms.Label interfaceIndexLabel;
         private System.Windows.Forms.Label availableNetworkNoLabel;
@@ -208,6 +208,7 @@
         private System.Windows.Forms.Label interfaceStatusLabel;
         private System.Windows.Forms.TextBox interfaceStatusTextBox;
         private System.Windows.Forms.ComboBox interfacesComboBox;
+        private System.Windows.Forms.DataGridView availableNetworksDataGridView;
     }
 }
 

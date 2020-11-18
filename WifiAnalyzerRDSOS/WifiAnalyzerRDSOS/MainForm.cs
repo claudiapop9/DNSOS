@@ -39,10 +39,44 @@ namespace WifiAnalyzerRDSOS
 
         private void interfacesComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var currentInterface = interfaces[0];
-            InterfaceGuidTextBox.Text = currentInterface.GUID;
+            var currentInterface = interfaces[interfacesComboBox.SelectedIndex];
+            InterfaceGuidTextBox.Text = currentInterface.GUID.ToString();
             interfaceStatusTextBox.Text = currentInterface.State;
             interfaceDescriptionTextBox.Text = currentInterface.Description;
+            availableNetworkEntriesTextBox.Text = currentInterface.AvailableNetworks.Count.ToString();
+            PopulateAvailableNetworks(currentInterface);
+        }
+
+        private void PopulateAvailableNetworks(WLANInterface wlanInterface) {
+            foreach (var availableItem in wlanInterface.AvailableNetworks) {
+                networksComboBox.Items.Add(availableItem.SSID);
+            }
+        }
+
+        private void networksComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            availableNetworksDataGridView.ColumnCount = 2;
+            availableNetworksDataGridView.Columns[0].Name = "Name";
+            availableNetworksDataGridView.Columns[1].Name = "Value";
+            availableNetworksDataGridView.Columns[1].Width = 215;
+            
+            var currentInterface = interfaces[interfacesComboBox.SelectedIndex];
+            var currentNetwork = currentInterface.AvailableNetworks[networksComboBox.SelectedIndex];
+
+            availableNetworksDataGridView.Rows.Add("SSID:", currentNetwork.SSID);
+            availableNetworksDataGridView.Rows.Add("BSSNetworkType:", currentNetwork.BSSNetworkType);
+            availableNetworksDataGridView.Rows.Add("BSSIDsNo:", currentNetwork.BSSIDsNo);
+            availableNetworksDataGridView.Rows.Add("Connectable:", currentNetwork.Connectable);
+            availableNetworksDataGridView.Rows.Add("SignalQuality:", currentNetwork.SignalQuality);
+            availableNetworksDataGridView.Rows.Add("isSecurityEnabled:", currentNetwork.isSecurityEnabled);
+            availableNetworksDataGridView.Rows.Add("AuthAlgorithm:", currentNetwork.AuthAlgorithm);
+            availableNetworksDataGridView.Rows.Add("CipherAlgorithm:", currentNetwork.CipherAlgorithm);
+            availableNetworksDataGridView.Rows.Add("Flags:", currentNetwork.Flags);
+        }
+
+        private void availableNetworksListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
