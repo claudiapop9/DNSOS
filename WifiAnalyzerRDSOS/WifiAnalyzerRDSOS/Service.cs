@@ -246,12 +246,12 @@ namespace WifiAnalyzerRDSOS
             IntPtr ppInterfaceList = IntPtr.Zero;
             IntPtr availableNetworkList = IntPtr.Zero;
             var wlanInterfaceCollection = new List<WLANInterface>();
-            
+
             try
             {
-                int iSucces = WlanOpenHandle(2, IntPtr.Zero, out pdwNegotiatedVersion, out phClientHandle);
-                
-                iSucces = WlanEnumInterfaces(phClientHandle, IntPtr.Zero, out ppInterfaceList);
+                WlanOpenHandle(2, IntPtr.Zero, out pdwNegotiatedVersion, out phClientHandle);
+
+                WlanEnumInterfaces(phClientHandle, IntPtr.Zero, out ppInterfaceList);
 
                 WLAN_INTERFACE_INFO_LIST interfaceInfoList = new WLAN_INTERFACE_INFO_LIST(ppInterfaceList);
 
@@ -298,7 +298,8 @@ namespace WifiAnalyzerRDSOS
                     wlanInterfaceCollection.Add(wlanInterface);
                 }
             }
-            finally {
+            finally
+            {
                 if (ppInterfaceList != IntPtr.Zero)
                     WlanFreeMemory(ppInterfaceList);
 
@@ -312,47 +313,5 @@ namespace WifiAnalyzerRDSOS
             return wlanInterfaceCollection;
         }
 
-        private List<WLANNetwork> GetWLANNetworks(Guid interfaceGuid)
-        {
-            var clientHandle = IntPtr.Zero;
-            var interfaceList = IntPtr.Zero;
-            var availableNetworkList = IntPtr.Zero;
-            var wlanNetworks = new List<WLANNetwork>();
-            try
-            {
-                if (WlanGetAvailableNetworkList(
-                            clientHandle,
-                            interfaceGuid,
-                            WLAN_AVAILABLE_NETWORK_INCLUDE_ALL_MANUAL_HIDDEN_PROFILES,
-                            IntPtr.Zero,
-                            out availableNetworkList) == ERROR_SUCCESS)
-                    return wlanNetworks;
-
-                var networkList = new WLAN_AVAILABLE_NETWORK_LIST(availableNetworkList);
-
-                foreach (var network in networkList.Network)
-                {
-                    var wlanNetwork = new WLANNetwork
-                    {
-                        SSID = network.dot11Ssid.ToString(),
-                        BSSNetworkType = network.dot11BssType.ToString(),
-                        BSSIDsNo = network.uNumberOfBssids.ToString(),
-                        Connectable = network.bNetworkConnectable,
-                        SignalQuality = network.wlanSignalQuality.ToString(),
-                        isSecurityEnabled = network.bSecurityEnabled,
-                        AuthAlgorithm = network.dot11DefaultAuthAlgorithm.ToString(),
-                        CipherAlgorithm = network.dot11DefaultCipherAlgorithm.ToString(),
-                        Flags = network.dwFlags.ToString()
-                    };
-
-                    wlanNetworks.Add(wlanNetwork);
-                }
-            }
-            finally {
-                if (availableNetworkList != IntPtr.Zero)
-                    WlanFreeMemory(availableNetworkList);
-            }
-            return wlanNetworks;
-        }
     }
 }
