@@ -41,6 +41,7 @@
             this.interfaceStatusTextBox = new System.Windows.Forms.TextBox();
             this.interfacesComboBox = new System.Windows.Forms.ComboBox();
             this.availableNetworksDataGridView = new System.Windows.Forms.DataGridView();
+            this.goToSnifferButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.availableNetworksDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -163,17 +164,30 @@
             // 
             // availableNetworksDataGridView
             // 
-            //this.availableNetworksDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.availableNetworksDataGridView.Location = new System.Drawing.Point(425, 97);
             this.availableNetworksDataGridView.Name = "availableNetworksDataGridView";
             this.availableNetworksDataGridView.Size = new System.Drawing.Size(354, 235);
             this.availableNetworksDataGridView.TabIndex = 14;
+            // 
+            // goToSnifferButton
+            // 
+            this.goToSnifferButton.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.goToSnifferButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.goToSnifferButton.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.goToSnifferButton.Location = new System.Drawing.Point(103, 283);
+            this.goToSnifferButton.Name = "goToSnifferButton";
+            this.goToSnifferButton.Size = new System.Drawing.Size(165, 35);
+            this.goToSnifferButton.TabIndex = 15;
+            this.goToSnifferButton.Text = "Go To Sniffer";
+            this.goToSnifferButton.UseVisualStyleBackColor = false;
+            this.goToSnifferButton.Click += new System.EventHandler(this.goToSnifferButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(812, 382);
+            this.Controls.Add(this.goToSnifferButton);
             this.Controls.Add(this.availableNetworksDataGridView);
             this.Controls.Add(this.interfacesComboBox);
             this.Controls.Add(this.interfaceStatusTextBox);
@@ -209,6 +223,7 @@
         private System.Windows.Forms.TextBox interfaceStatusTextBox;
         private System.Windows.Forms.ComboBox interfacesComboBox;
         private System.Windows.Forms.DataGridView availableNetworksDataGridView;
+        private System.Windows.Forms.Button goToSnifferButton;
     }
 }
 

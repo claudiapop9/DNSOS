@@ -8,6 +8,8 @@ namespace WifiAnalyzerRDSOS
 {
     class Service
     {
+        #region WiFi Analyer
+    
         #region WLANInterface
         private enum WLAN_INTERFACE_STATE
         {
@@ -312,6 +314,14 @@ namespace WifiAnalyzerRDSOS
 
             return wlanInterfaceCollection;
         }
+
+        #endregion
+
+        #region Sniffer
+
+
+
+        #endregion
 
     }
 }

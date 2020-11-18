@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace WifiAnalyzerRDSOS
@@ -77,6 +71,21 @@ namespace WifiAnalyzerRDSOS
         private void availableNetworksListView_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void goToSnifferButton_Click(object sender, EventArgs e)
+        {
+            if (interfacesComboBox.SelectedIndex >= 0 && interfacesComboBox.SelectedIndex < interfacesComboBox.Items.Count)
+            {
+                SnifferForm openSnifferForm = new SnifferForm();
+                this.Hide();
+                openSnifferForm.Show();
+            }
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
