@@ -282,7 +282,6 @@ namespace WifiAnalyzerRDSOS
                             isSecurityEnabled = network.bSecurityEnabled,
                             AuthAlgorithm = network.dot11DefaultAuthAlgorithm.ToString(),
                             CipherAlgorithm = network.dot11DefaultCipherAlgorithm.ToString(),
-                            //Flags = network.dwFlags && WLAN_AVAILABLE_NETWORK_CONNECTED ? "Currently connected" : " Has profile"
                         };
 
                         wlanNetworks.Add(wlanNetwork);
@@ -317,11 +316,6 @@ namespace WifiAnalyzerRDSOS
 
         #endregion
 
-        #region Sniffer
-
-
-
-        #endregion
 
     }
 }

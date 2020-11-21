@@ -43,6 +43,8 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.packetInfoTextBox = new System.Windows.Forms.TextBox();
+            this.packetInfoLabel = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +60,7 @@
             this.lastPacketButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(627, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(633, 27);
             this.toolStrip1.TabIndex = 12;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -82,6 +84,7 @@
             this.stopSnifferButton.Size = new System.Drawing.Size(24, 24);
             this.stopSnifferButton.Text = "stopSnifferButton";
             this.stopSnifferButton.ToolTipText = "Stop sniffing";
+            this.stopSnifferButton.Click += new System.EventHandler(this.stopSnifferButton_Click);
             // 
             // previousPacketButton
             // 
@@ -145,6 +148,7 @@
             this.packetsListView.TabIndex = 13;
             this.packetsListView.UseCompatibleStateImageBehavior = false;
             this.packetsListView.View = System.Windows.Forms.View.Details;
+            this.packetsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.packetsListView_ItemSelectionChanged);
             this.packetsListView.SelectedIndexChanged += new System.EventHandler(this.packetsListView_SelectedIndexChanged);
             // 
             // columnHeader1
@@ -182,11 +186,34 @@
             this.columnHeader6.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader6.Width = 80;
             // 
+            // packetInfoTextBox
+            // 
+            this.packetInfoTextBox.Location = new System.Drawing.Point(11, 439);
+            this.packetInfoTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.packetInfoTextBox.Multiline = true;
+            this.packetInfoTextBox.Name = "packetInfoTextBox";
+            this.packetInfoTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.packetInfoTextBox.Size = new System.Drawing.Size(435, 164);
+            this.packetInfoTextBox.TabIndex = 14;
+            // 
+            // packetInfoLabel
+            // 
+            this.packetInfoLabel.AutoSize = true;
+            this.packetInfoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.packetInfoLabel.Location = new System.Drawing.Point(11, 410);
+            this.packetInfoLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.packetInfoLabel.Name = "packetInfoLabel";
+            this.packetInfoLabel.Size = new System.Drawing.Size(125, 17);
+            this.packetInfoLabel.TabIndex = 15;
+            this.packetInfoLabel.Text = "Packet Information";
+            // 
             // SnifferForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(627, 399);
+            this.ClientSize = new System.Drawing.Size(633, 627);
+            this.Controls.Add(this.packetInfoLabel);
+            this.Controls.Add(this.packetInfoTextBox);
             this.Controls.Add(this.packetsListView);
             this.Controls.Add(this.toolStrip1);
             this.Name = "SnifferForm";
@@ -214,5 +241,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
+        private System.Windows.Forms.TextBox packetInfoTextBox;
+        private System.Windows.Forms.Label packetInfoLabel;
     }
 }

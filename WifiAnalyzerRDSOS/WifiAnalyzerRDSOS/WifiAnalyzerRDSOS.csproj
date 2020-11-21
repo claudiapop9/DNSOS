@@ -65,6 +65,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EthernetPacket.cs" />
+    <Compile Include="Internet\FragmentationFlags.cs" />
+    <Compile Include="Internet\IIpPacket.cs" />
+    <Compile Include="Internet\IpProtocol.cs" />
+    <Compile Include="Internet\IpV4Packet.cs" />
+    <Compile Include="Internet\IpVersion.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +86,11 @@
     <Compile Include="SnifferForm.Designer.cs">
       <DependentUpon>SnifferForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Transport\RawPacket.cs" />
+    <Compile Include="Transport\TcpControlFlags.cs" />
+    <Compile Include="Transport\TcpPacket.cs" />
+    <Compile Include="Transport\ITransportPacket.cs" />
+    <Compile Include="Utils\BinaryHelper.cs" />
     <Compile Include="WLANInterface.cs" />
     <Compile Include="WLANNetwork.cs" />
     <EmbeddedResource Include="MainForm.resx">
