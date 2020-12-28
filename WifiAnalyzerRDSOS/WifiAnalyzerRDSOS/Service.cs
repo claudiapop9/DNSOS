@@ -51,7 +51,7 @@ namespace WifiAnalyzerRDSOS
 
                 int ifListStartOffset = iByteCount;
 
-                int ifListItemSize = Marshal.SizeOf(typeof(Int32)) * 5 + 2 * 256; // Int32*4 + WCHAR[256] + Int32
+                int ifListItemSize = Marshal.SizeOf(typeof(Int32)) * 5 + 2 * 256; 
                 InterfaceInfo = new WLAN_INTERFACE_INFO[dwNumberOfItems];
                 for (int i = 0; i < dwNumberOfItems; i++)
                 {

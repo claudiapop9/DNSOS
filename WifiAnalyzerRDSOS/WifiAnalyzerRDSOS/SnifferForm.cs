@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Windows.Forms;
+using WifiAnalyzerRDSOS.Internet;
 
 namespace WifiAnalyzerRDSOS
 {
@@ -15,7 +16,6 @@ namespace WifiAnalyzerRDSOS
 
         int packetNumber = 1;
         string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "", length = "";
-        int nextSelectedItem = 0;
 
         Thread sniffing;
 
@@ -69,8 +69,6 @@ namespace WifiAnalyzerRDSOS
             }
 
             //PacketDotNet.EthernetPacket ipPacket = (EthernetPacket)packet;
-            //MyEthernetPacket myEthernet = new MyEthernetPacket(ipPacket);
-
 
             PacketDotNet.IPPacket ipPacket = (PacketDotNet.IPPacket)packet.Extract<IPPacket>();
             if (ipPacket != null)

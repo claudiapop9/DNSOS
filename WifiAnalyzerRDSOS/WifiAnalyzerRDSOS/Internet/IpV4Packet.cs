@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net;
 using WifiAnalyzerRDSOS.Transport;
+using WifiAnalyzerRDSOS.Utils;
 
 namespace WifiAnalyzerRDSOS.Internet
 {
@@ -54,15 +55,15 @@ namespace WifiAnalyzerRDSOS.Internet
             RawData = data;
 
             TypeOfService = RawData[Offsets.TypeOfService];
-            TotalLength = BitConverter.ToInt16(RawData, Offsets.TotalLength);
+            TotalLength = BinaryHelper.Read16Bits(RawData, Offsets.TotalLength);
 
-            Identification = BitConverter.ToInt16(RawData, Offsets.Identification);
+            Identification = BinaryHelper.Read16Bits(RawData, Offsets.Identification);
 
-            HeaderChecksum = BitConverter.ToInt16(RawData, Offsets.HeaderChecksum);
+            HeaderChecksum = BinaryHelper.Read16Bits(RawData, Offsets.HeaderChecksum);
 
-            var sAdress = BitConverter.ToInt32(RawData, Offsets.SourceAddress);
+            var sAdress = BinaryHelper.Read32Bits(RawData, Offsets.SourceAddress);
             SourceAddress = new IPAddress(sAdress);
-            var dAdress = BitConverter.ToInt32(RawData, Offsets.DestinationAddress);
+            var dAdress = BinaryHelper.Read32Bits(RawData, Offsets.DestinationAddress);
             DestinationAddress = new IPAddress(dAdress);
             //TransportPacket = new RawPacket(this);
         }

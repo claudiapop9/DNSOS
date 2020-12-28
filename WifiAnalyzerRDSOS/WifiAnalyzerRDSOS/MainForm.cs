@@ -65,7 +65,7 @@ namespace WifiAnalyzerRDSOS
             availableNetworksDataGridView.Rows.Add("isSecurityEnabled:", currentNetwork.isSecurityEnabled);
             availableNetworksDataGridView.Rows.Add("AuthAlgorithm:", currentNetwork.AuthAlgorithm);
             availableNetworksDataGridView.Rows.Add("CipherAlgorithm:", currentNetwork.CipherAlgorithm);
-            //availableNetworksDataGridView.Rows.Add("Flags:", currentNetwork.Flags);
+          
         }
 
         private void availableNetworksListView_SelectedIndexChanged(object sender, EventArgs e)

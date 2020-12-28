@@ -148,7 +148,6 @@
             this.packetsListView.TabIndex = 13;
             this.packetsListView.UseCompatibleStateImageBehavior = false;
             this.packetsListView.View = System.Windows.Forms.View.Details;
-            this.packetsListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.packetsListView_ItemSelectionChanged);
             this.packetsListView.SelectedIndexChanged += new System.EventHandler(this.packetsListView_SelectedIndexChanged);
             // 
             // columnHeader1
